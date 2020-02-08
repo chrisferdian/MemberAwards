@@ -1,0 +1,35 @@
+{
+  "awards": [
+    {
+      "awardId" : 0,
+      "awardType": "Vouchers",
+      "pointGoal": 500000,
+      "awardName": "Gift Card 1.000.000"
+    },{
+      "awardId" : 1,
+      "awardType": "Giftcard",
+      "pointGoal": 7000,
+      "awardName": "Gift Card 750.000"
+    },{
+      "awardId" : 2,
+      "awardType": "Giftcard",
+      "pointGoal": 1000,
+      "awardName": "Gift Card 100.000"
+    },{
+      "awardId" : 3,
+      "awardType": "Products",
+      "pointGoal": 3000,
+      "awardName": "Old Fashion cake"
+    },{
+      "awardId" : 4,
+      "awardType": "Vouchers",
+      "pointGoal": 500000,
+      "awardName": "Gift Card 1.000.000"
+    },{
+      "awardId" : 5,
+      "awardType": "Products",
+      "pointGoal": 30000,
+      "awardName": "iPod touch 8th"
+    }
+  ]
+}
