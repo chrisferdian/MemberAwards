@@ -10,13 +10,14 @@ import Foundation
 
 class WelcomeViewModel {
         
-    internal var didSignIn: ((Bool)->Void)?
+    internal var didSignIn: ((WelcomeModel.Response)->Void)?
 
-    func handleSignIn(email: String) {
+    func handleSignIn(request: WelcomeModel.Request) {
+        guard let email = request.email else { return }
         if Constant.emailRegistered.contains(email) {
-            self.didSignIn?(true)
+            self.didSignIn?(WelcomeModel.Response(success: true))
         } else {
-            self.didSignIn?(false)
+            self.didSignIn?(WelcomeModel.Response(success: false))
         }
     }
 }

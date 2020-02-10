@@ -20,13 +20,20 @@ class WelcomeViewController: UIViewController {
 
     private func setupViewModel() {
         viewModel = WelcomeViewModel()
-        viewModel?.didSignIn = { success in
-            print(success)
+        viewModel?.didSignIn = { response in
+            guard let application = UIApplication.shared.delegate as? AppDelegate else { return }
+            if response.success ?? false {
+                let myViewController = FeedViewController(nibName: "FeedViewController", bundle: nil)
+                let feedViewController = UINavigationController(rootViewController: myViewController)
+                application.window?.setRootViewController(feedViewController, options: .init(direction: .fade, style: .easeIn))
+                
+            }
         }
     }
     
     @IBAction func didSignInTapped() {
         guard let email = fieldEamil.text else { return }
-        viewModel?.handleSignIn(email: email)
+        let req = WelcomeModel.Request(email: email)
+        viewModel?.handleSignIn(request: req)
     }
 }

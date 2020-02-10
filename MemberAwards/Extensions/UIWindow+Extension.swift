@@ -36,68 +36,140 @@ public extension UIWindow {
         return viewController
     }
     
-    /**
-     See [Stack Overflow](http://stackoverflow.com/a/27153956)
-     
-     Usage with transition:
-     
-     ```
-     let transition = CATransition()
-     transition.type = kCATransitionFade
-     window.setRootViewControllerTo(destinationViewController, withTransition: transition)
-     ```
-     */
-    func setRootViewController(to newRootViewController: UIViewController, withTransition transition: CATransition? = nil) {
-        
-        let previousViewController = rootViewController
-        
-        if let transition = transition {
-            // Add the transition
-            layer.add(transition, forKey: kCATransition)
-        }
-        
-        rootViewController = newRootViewController
-        
-        // Update status bar appearance using the new view controllers appearance - animate if needed
-        if UIView.areAnimationsEnabled {
-            UIView.animate(withDuration: CATransaction.animationDuration(), animations: {
-                newRootViewController.setNeedsStatusBarAppearanceUpdate()
-            })
-        } else {
-            newRootViewController.setNeedsStatusBarAppearanceUpdate()
-        }
-        
-        /// The presenting view controllers view doesn't get removed from the window as it's currently transitioning and presenting a view controller
-        if let transitionViewClass = NSClassFromString("UITransitionView") {
-            for subview in subviews where subview.isKind(of: transitionViewClass) {
-                subview.removeFromSuperview()
+    /// Change the root view controller of the window
+    ///
+    /// - Parameters:
+    ///   - controller: controller to set
+    ///   - options: options of the transition
+    func setRootViewController(_ controller: UIViewController, options: TransitionOptions = TransitionOptions()) {
+        var transitionWnd: UIWindow?
+        if let background = options.background {
+            transitionWnd = UIWindow(frame: UIScreen.main.bounds)
+            switch background {
+            case .customView(let view):
+                transitionWnd?.rootViewController = UIViewController.newController(withView: view, frame: transitionWnd!.bounds)
+            case .solidColor(let color):
+                transitionWnd?.backgroundColor = color
             }
+            transitionWnd?.makeKeyAndVisible()
         }
-        if let previousViewController = previousViewController {
-            // Allow the view controller to be deallocated
-            previousViewController.dismiss(animated: false) {
-                // Remove the root view in case its still showing
-                previousViewController.view.removeFromSuperview()
+        
+        // Make animation
+        self.layer.add(options.animation, forKey: kCATransition)
+        self.rootViewController = controller
+        self.makeKeyAndVisible()
+        
+        if let wnd = transitionWnd {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1 + options.duration) {
+                wnd.removeFromSuperview()
             }
         }
     }
     
-    func setRootViewController(to newRootViewController: UIViewController, withTransitionType transitionType: TransitionType, andSubtype transitionSubtype: TransitionSubType? = nil) {
+    /// Transition Options
+    struct TransitionOptions {
+        /// Curve of animation
+        ///
+        /// - linear: linear
+        /// - easeIn: ease in
+        /// - easeOut: ease out
+        /// - easeInOut: ease in - ease out
+        public enum Curve {
+            case linear
+            case easeIn
+            case easeOut
+            case easeInOut
+            
+            /// Return the media timing function associated with curve
+            internal var function: CAMediaTimingFunction {
+                let key: String!
+                switch self {
+                case .linear: key = CAMediaTimingFunctionName.linear.rawValue
+                case .easeIn: key = CAMediaTimingFunctionName.easeIn.rawValue
+                case .easeOut: key = CAMediaTimingFunctionName.easeOut.rawValue
+                case .easeInOut: key = CAMediaTimingFunctionName.easeInEaseOut.rawValue
+                }
+                return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: key!))
+            }
+        }
         
-        setRootViewController(to: newRootViewController, withTransition: transitionType.transition(with: transitionSubtype))
-    }
-    
-    /**
-     Instantiates initial view controller of given storyboard and sets it using UIWindow.setRootViewControllerTo(_:withTransition:)
-     */
-    func setRootViewController(toInitialViewControllerOf storyboard: UIStoryboard, withTransition transition: CATransition? = nil) {
+        /// Direction of the animation
+        ///
+        /// - fade: fade to new controller
+        /// - toTop: slide from bottom to top
+        /// - toBottom: slide from top to bottom
+        /// - toLeft: pop to left
+        /// - toRight: push to right
+        public enum Direction {
+            case fade
+            case toTop
+            case toBottom
+            case toLeft
+            case toRight
+            
+            /// Return the associated transition
+            ///
+            /// - Returns: transition
+            internal func transition() -> CATransition {
+                let transition = CATransition()
+                transition.type = CATransitionType.push
+                switch self {
+                case .fade:
+                    transition.type = CATransitionType.fade
+                    transition.subtype = nil
+                case .toLeft:
+                    transition.subtype = CATransitionSubtype.fromLeft
+                case .toRight:
+                    transition.subtype = CATransitionSubtype.fromRight
+                case .toTop:
+                    transition.subtype = CATransitionSubtype.fromTop
+                case .toBottom:
+                    transition.subtype = CATransitionSubtype.fromBottom
+                }
+                return transition
+            }
+        }
         
-        let vc = storyboard.instantiateInitialViewController()!
-        setRootViewController(to: vc, withTransition: transition)
-    }
-    func setRootViewController(toInitialViewControllerOf storyboard: UIStoryboard, withTransitionType transitionType: TransitionType? = nil, andSubtype transitionSubtype: TransitionSubType? = nil) {
+        /// Background of the transition
+        ///
+        /// - solidColor: solid color
+        /// - customView: custom view
+        public enum Background {
+            case solidColor(_: UIColor)
+            case customView(_: UIView)
+        }
         
-        setRootViewController(toInitialViewControllerOf: storyboard, withTransition: transitionType?.transition(with: transitionSubtype))
+        /// Duration of the animation (default is 0.20s)
+        public var duration: TimeInterval = 0.20
+        
+        /// Direction of the transition (default is `toRight`)
+        public var direction: TransitionOptions.Direction = .toRight
+        
+        /// Style of the transition (default is `linear`)
+        public var style: TransitionOptions.Curve = .linear
+        
+        /// Background of the transition (default is `nil`)
+        public var background: TransitionOptions.Background?
+        
+        /// Initialize a new options object with given direction and curve
+        ///
+        /// - Parameters:
+        ///   - direction: direction
+        ///   - style: style
+        public init(direction: TransitionOptions.Direction = .toRight, style: TransitionOptions.Curve = .linear) {
+            self.direction = direction
+            self.style = style
+        }
+        
+        public init() {}
+        
+        /// Return the animation to perform for given options object
+        internal var animation: CATransition {
+            let transition = self.direction.transition()
+            transition.duration = self.duration
+            transition.timingFunction = self.style.function
+            return transition
+        }
     }
 }
 
