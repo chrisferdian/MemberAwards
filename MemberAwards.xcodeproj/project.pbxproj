@@ -21,6 +21,7 @@
 		84DE113E23EEA657006E0A42 /* Storyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE113D23EEA657006E0A42 /* Storyboard+Extension.swift */; };
 		84DE114023F0ED28006E0A42 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE113F23F0ED27006E0A42 /* WelcomeViewModel.swift */; };
 		84DE114223F0EE3A006E0A42 /* WelcomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114123F0EE39006E0A42 /* WelcomeModel.swift */; };
+		84DE114523F0EED8006E0A42 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114423F0EED8006E0A42 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		84DE113D23EEA657006E0A42 /* Storyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Extension.swift"; sourceTree = "<group>"; };
 		84DE113F23F0ED27006E0A42 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		84DE114123F0EE39006E0A42 /* WelcomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModel.swift; sourceTree = "<group>"; };
+		84DE114423F0EED8006E0A42 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				84DE110B23EE81A5006E0A42 /* AppDelegate.swift */,
 				84DE112D23EE972F006E0A42 /* awards.json */,
 				84DE111923EE81A8006E0A42 /* Info.plist */,
+				84DE114423F0EED8006E0A42 /* Constants.swift */,
 				84DE113623EEA407006E0A42 /* Extensions */,
 				84DE112F23EE97CE006E0A42 /* Modules */,
 				84DE114323F0EEA1006E0A42 /* SupportingFiles */,
@@ -271,6 +274,7 @@
 				84DE113A23EEA462006E0A42 /* XIB+Extension.swift in Sources */,
 				84DE113323EE9F9E006E0A42 /* WelcomeViewController.swift in Sources */,
 				84DE110C23EE81A5006E0A42 /* AppDelegate.swift in Sources */,
+				84DE114523F0EED8006E0A42 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,25 +10,28 @@ import XCTest
 @testable import MemberAwards
 
 class MemberAwardsTests: XCTestCase {
-
+    
+    /// Properties
+    var welcomeViewModel: WelcomeViewModel?
+    var constant: Constant?
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        welcomeViewModel = WelcomeViewModel()
+        constant = Constant()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.welcomeViewModel = nil
+        self.constant = nil
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testMatchingEmail() {
+        let emailFilled = "unknown@mail.com"
+        XCTAssertFalse(Constant.emailRegistered.contains(emailFilled))
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testRegistredEmail() {
+        let emailFilled = "person@member.id"
+        XCTAssertTrue(Constant.emailRegistered.contains(emailFilled))
     }
-
 }
