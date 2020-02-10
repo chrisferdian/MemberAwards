@@ -21,12 +21,8 @@ class WelcomeViewController: UIViewController {
     private func setupViewModel() {
         viewModel = WelcomeViewModel()
         viewModel?.didSignIn = { response in
-            guard let application = UIApplication.shared.delegate as? AppDelegate else { return }
             if response.success ?? false {
-                let myViewController = FeedViewController(nibName: "FeedViewController", bundle: nil)
-                let feedViewController = UINavigationController(rootViewController: myViewController)
-                application.window?.setRootViewController(feedViewController, options: .init(direction: .fade, style: .easeIn))
-                
+                self.navigateToFeed()
             }
         }
     }
@@ -35,5 +31,10 @@ class WelcomeViewController: UIViewController {
         guard let email = fieldEamil.text else { return }
         let req = WelcomeModel.Request(email: email)
         viewModel?.handleSignIn(request: req)
+    }
+    
+    private func navigateToFeed() {
+        guard let application = UIApplication.shared.delegate as? AppDelegate else { return }
+        application.window?.setRootViewController(MainViewController(), options: .init(direction: .fade, style: .easeIn))
     }
 }

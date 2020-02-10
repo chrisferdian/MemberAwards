@@ -24,6 +24,11 @@
 		84DE114523F0EED8006E0A42 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114423F0EED8006E0A42 /* Constants.swift */; };
 		84DE114823F0F631006E0A42 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114623F0F631006E0A42 /* FeedViewController.swift */; };
 		84DE114923F0F631006E0A42 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE114723F0F631006E0A42 /* FeedViewController.xib */; };
+		84DE114C23F12D99006E0A42 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114B23F12D99006E0A42 /* DrawerController.swift */; };
+		84DE114F23F12E0E006E0A42 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114D23F12E0E006E0A42 /* MenuViewController.swift */; };
+		84DE115023F12E0E006E0A42 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE114E23F12E0E006E0A42 /* MenuViewController.xib */; };
+		84DE115223F12E37006E0A42 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE115123F12E37006E0A42 /* RootViewController.swift */; };
+		84DE115423F1313A006E0A42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE115323F1313A006E0A42 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,11 @@
 		84DE114423F0EED8006E0A42 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84DE114623F0F631006E0A42 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		84DE114723F0F631006E0A42 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
+		84DE114B23F12D99006E0A42 /* DrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerController.swift; sourceTree = "<group>"; };
+		84DE114D23F12E0E006E0A42 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		84DE114E23F12E0E006E0A42 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		84DE115123F12E37006E0A42 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		84DE115323F1313A006E0A42 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +132,10 @@
 		84DE112F23EE97CE006E0A42 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84DE114A23F12D83006E0A42 /* Drawer */,
 				84DE113123EE9F5A006E0A42 /* Feed */,
 				84DE113023EE97DC006E0A42 /* Welcome */,
+				84DE115323F1313A006E0A42 /* MainViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -167,6 +179,17 @@
 				84DE111623EE81A8006E0A42 /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		84DE114A23F12D83006E0A42 /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				84DE114B23F12D99006E0A42 /* DrawerController.swift */,
+				84DE114D23F12E0E006E0A42 /* MenuViewController.swift */,
+				84DE114E23F12E0E006E0A42 /* MenuViewController.xib */,
+				84DE115123F12E37006E0A42 /* RootViewController.swift */,
+			);
+			path = Drawer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +278,7 @@
 				84DE111823EE81A8006E0A42 /* LaunchScreen.storyboard in Resources */,
 				84DE111523EE81A8006E0A42 /* Assets.xcassets in Resources */,
 				84DE114923F0F631006E0A42 /* FeedViewController.xib in Resources */,
+				84DE115023F12E0E006E0A42 /* MenuViewController.xib in Resources */,
 				84DE111323EE81A5006E0A42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,12 +301,16 @@
 				84DE113C23EEA57D006E0A42 /* UIWindow+Extension.swift in Sources */,
 				84DE114823F0F631006E0A42 /* FeedViewController.swift in Sources */,
 				84DE114223F0EE3A006E0A42 /* WelcomeModel.swift in Sources */,
+				84DE115223F12E37006E0A42 /* RootViewController.swift in Sources */,
 				84DE113E23EEA657006E0A42 /* Storyboard+Extension.swift in Sources */,
 				84DE114023F0ED28006E0A42 /* WelcomeViewModel.swift in Sources */,
+				84DE115423F1313A006E0A42 /* MainViewController.swift in Sources */,
 				84DE113A23EEA462006E0A42 /* XIB+Extension.swift in Sources */,
+				84DE114F23F12E0E006E0A42 /* MenuViewController.swift in Sources */,
 				84DE113323EE9F9E006E0A42 /* WelcomeViewController.swift in Sources */,
 				84DE110C23EE81A5006E0A42 /* AppDelegate.swift in Sources */,
 				84DE114523F0EED8006E0A42 /* Constants.swift in Sources */,
+				84DE114C23F12D99006E0A42 /* DrawerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
