@@ -9,6 +9,14 @@
 import Foundation
 
 class WelcomeViewModel {
-    
-    
+        
+    internal var didSignIn: ((Bool)->Void)?
+
+    func handleSignIn(email: String) {
+        if Constant.emailRegistered.contains(email) {
+            self.didSignIn?(true)
+        } else {
+            self.didSignIn?(false)
+        }
+    }
 }
