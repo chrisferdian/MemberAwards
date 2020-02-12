@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,8 @@
 		84DE114923F0F631006E0A42 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE114723F0F631006E0A42 /* FeedViewController.xib */; };
 		84DE114F23F12E0E006E0A42 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE114D23F12E0E006E0A42 /* MenuViewController.swift */; };
 		84DE115023F12E0E006E0A42 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE114E23F12E0E006E0A42 /* MenuViewController.xib */; };
+		84DE116A23F38378006E0A42 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE116823F38377006E0A42 /* FilterViewController.swift */; };
+		84DE116B23F38378006E0A42 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DE116923F38377006E0A42 /* FilterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		84DE114723F0F631006E0A42 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
 		84DE114D23F12E0E006E0A42 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		84DE114E23F12E0E006E0A42 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		84DE116823F38377006E0A42 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		84DE116923F38377006E0A42 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		CA6D336E1DA7E0E23468CE2F /* Pods-MemberAwardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemberAwardsTests.release.xcconfig"; path = "Target Support Files/Pods-MemberAwardsTests/Pods-MemberAwardsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D95D170BD2B70097DF44CC77 /* Pods_MemberAwardsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemberAwardsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,7 +104,6 @@
 				1DA98348948FE855166DABB6 /* Pods-MemberAwardsTests.debug.xcconfig */,
 				CA6D336E1DA7E0E23468CE2F /* Pods-MemberAwardsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -150,6 +153,7 @@
 		84DE112F23EE97CE006E0A42 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84DE116723F38363006E0A42 /* Filter */,
 				84DE114A23F12D83006E0A42 /* Drawer */,
 				84DE113123EE9F5A006E0A42 /* Feed */,
 				84DE113023EE97DC006E0A42 /* Welcome */,
@@ -205,6 +209,15 @@
 				84DE114E23F12E0E006E0A42 /* MenuViewController.xib */,
 			);
 			path = Drawer;
+			sourceTree = "<group>";
+		};
+		84DE116723F38363006E0A42 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				84DE116823F38377006E0A42 /* FilterViewController.swift */,
+				84DE116923F38377006E0A42 /* FilterViewController.xib */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		D45B1DE381D0B9A80F8DAFA1 /* Frameworks */ = {
@@ -306,6 +319,7 @@
 				84DE111523EE81A8006E0A42 /* Assets.xcassets in Resources */,
 				84DE114923F0F631006E0A42 /* FeedViewController.xib in Resources */,
 				84DE115023F12E0E006E0A42 /* MenuViewController.xib in Resources */,
+				84DE116B23F38378006E0A42 /* FilterViewController.xib in Resources */,
 				84DE111323EE81A5006E0A42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +408,7 @@
 				84DE114223F0EE3A006E0A42 /* WelcomeModel.swift in Sources */,
 				84DE113E23EEA657006E0A42 /* Storyboard+Extension.swift in Sources */,
 				84DE114023F0ED28006E0A42 /* WelcomeViewModel.swift in Sources */,
+				84DE116A23F38378006E0A42 /* FilterViewController.swift in Sources */,
 				84DE113A23EEA462006E0A42 /* XIB+Extension.swift in Sources */,
 				84DE114F23F12E0E006E0A42 /* MenuViewController.swift in Sources */,
 				84DE113323EE9F9E006E0A42 /* WelcomeViewController.swift in Sources */,

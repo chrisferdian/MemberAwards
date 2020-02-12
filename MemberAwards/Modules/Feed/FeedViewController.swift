@@ -12,11 +12,15 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FeedViewController.className)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justifyleft"), style: .done, target: self, action: #selector(showLeft))
+        title = "Awards"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.justifyleft"), style: .done, target: self, action: #selector(showDrawerMenu))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3.decrease"), style: .done, target: self, action: #selector(showFilterPage))
     }
     
-    @objc func showLeft() {
+    @objc func showDrawerMenu() {
         drawerController?.show(.left, animated: true)
+    }
+    @objc func showFilterPage() {
+        self.navigationController?.present(FilterViewController(), animated: true, completion: nil)
     }
 }
