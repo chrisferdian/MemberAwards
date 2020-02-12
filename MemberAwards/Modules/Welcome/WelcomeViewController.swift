@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ZKDrawerController
 
 class WelcomeViewController: UIViewController {
 
@@ -35,6 +36,12 @@ class WelcomeViewController: UIViewController {
     
     private func navigateToFeed() {
         guard let application = UIApplication.shared.delegate as? AppDelegate else { return }
-        application.window?.setRootViewController(MainViewController(), options: .init(direction: .fade, style: .easeIn))
+        let menuController = MenuViewController()
+        let feed = UINavigationController(rootViewController: FeedViewController())
+        let drawerController = ZKDrawerController(center: feed, left: menuController)
+        drawerController.drawerStyle = .cover
+        drawerController.mainCoverView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+
+        application.window?.setRootViewController(drawerController, options: .init(direction: .fade, style: .easeIn))
     }
 }

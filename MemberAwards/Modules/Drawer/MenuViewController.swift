@@ -15,16 +15,16 @@ class MenuViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func hideDrawer() {
+        drawerController?.hide(animated: true)
     }
-    */
-
+    
+    @IBAction func backToWelcome() {
+        drawerController?.hide(animated: true)
+        guard let application = UIApplication.shared.delegate as? AppDelegate else { return }
+        let welcome = WelcomeViewController()
+        application.window?.setRootViewController(welcome, options: .init(direction: .fade, style: .easeIn))
+    }
 }
